@@ -181,9 +181,8 @@ VOLUME [ \
     "/etc/splash/lua_modules" \
 ]
 
-EXPOSE 8050
-
-ENTRYPOINT [ \
+CMD [ \
+    "gunicorn --bind 0.0.0.0:$PORT wsgi" \
     "python3", \
     "/app/bin/splash", \
     "--proxy-profiles-path", "/etc/splash/proxy-profiles", \
